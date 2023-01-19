@@ -1,4 +1,4 @@
-package souvik.graphs.adjMatrix;
+package souvik.graph;
 
 import souvik.support.List;
 import souvik.support.Queue;
@@ -9,15 +9,40 @@ public class BreadthFirstSearch {
     private final Integer[] edgeTo;
     private final List<Integer> traversal;
 
-    public BreadthFirstSearch(Graph graph, int source) {
+    private BreadthFirstSearch(int vertex, int source) {
         this.source = source;
-        marked = new boolean[graph.getVertex()];
-        edgeTo = new Integer[graph.getVertex()];
+        marked = new boolean[vertex];
+        edgeTo = new Integer[vertex];
         traversal = new List<>();
+    }
+
+    public BreadthFirstSearch(GraphAL graph, int source) {
+        this(graph.getVertex(), source);
         bfs(graph);
     }
 
-    private void bfs(Graph graph) {
+    public BreadthFirstSearch(GraphAM graph, int source) {
+        this(graph.getVertex(), source);
+        bfs(graph);
+    }
+
+    private void bfs(GraphAL graph) {
+        Queue<Integer> q = new Queue<>();
+        q.enqueue(source);
+        while (!q.isEmpty()) {
+            int v = q.dequeue();
+            marked[v] = true;
+            traversal.push_back(v);
+            for (int w : graph.adj(v)) {
+                if (!marked[w]) {
+                    q.enqueue(w);
+                    edgeTo[w] = v;
+                }
+            }
+        }
+    }
+
+    private void bfs(GraphAM graph) {
         Queue<Integer> q = new Queue<>();
         q.enqueue(source);
         while (!q.isEmpty()) {

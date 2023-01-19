@@ -1,13 +1,12 @@
-package souvik.graphs.adjMatrix;
+package souvik.graph;
 
-public class Graph {
+public class GraphAM {
     private final int vertex;
     private int edges;
     private final boolean[][] adj;
 
-    public Graph(int vertex) {
+    public GraphAM(int vertex) {
         this.vertex = vertex;
-        edges = 0;
         adj = new boolean[vertex][vertex];
     }
 

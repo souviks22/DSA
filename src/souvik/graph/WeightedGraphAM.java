@@ -1,12 +1,11 @@
-package souvik.graphs.weighted;
+package souvik.graph;
 
-public class WeightedAMGraph {
+public class WeightedGraphAM {
     private final int vertex;
     private int edges;
     private final Double[][] adj;
-    public WeightedAMGraph(int vertex){
+    public WeightedGraphAM(int vertex){
         this.vertex = vertex;
-        edges = 0;
         adj = new Double[vertex][vertex];
     }
     public void addEdge(Edge e) {

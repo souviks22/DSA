@@ -1,4 +1,4 @@
-package souvik.graphs.adjMatrix;
+package souvik.graph;
 
 import souvik.support.List;
 import souvik.support.Stack;
@@ -9,15 +9,40 @@ public class DepthFirstSearch {
     private final Integer[] edgeTo;
     private final List<Integer> traversal;
 
-    public DepthFirstSearch(Graph graph, int source) {
+    private DepthFirstSearch(int vertex, int source) {
         this.source = source;
-        marked = new boolean[graph.getVertex()];
-        edgeTo = new Integer[graph.getVertex()];
+        marked = new boolean[vertex];
+        edgeTo = new Integer[vertex];
         traversal = new List<>();
+    }
+
+    public DepthFirstSearch(GraphAL graph, int source) {
+        this(graph.getVertex(), source);
         dfs(graph);
     }
 
-    private void dfs(Graph graph) {
+    public DepthFirstSearch(GraphAM graph, int source) {
+        this(graph.getVertex(), source);
+        dfs(graph);
+    }
+
+    private void dfs(GraphAL graph) {
+        Stack<Integer> s = new Stack<>();
+        s.push(source);
+        while (!s.isEmpty()) {
+            int v = s.pop();
+            marked[v] = true;
+            traversal.push_back(v);
+            for (int w : graph.adj(v)) {
+                if (!marked[w]) {
+                    s.push(w);
+                    edgeTo[w] = v;
+                }
+            }
+        }
+    }
+
+    private void dfs(GraphAM graph) {
         Stack<Integer> s = new Stack<>();
         s.push(source);
         while (!s.isEmpty()) {
