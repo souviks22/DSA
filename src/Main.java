@@ -1,17 +1,24 @@
-import souvik.graphs.adjList.DepthFirstSearch;
-import souvik.graphs.adjList.Graph;
+import souvik.graph.DepthFirstSearch;
+import souvik.graph.GraphAL;
+
+import java.util.Random;
+import java.util.Scanner;
 
 
 public class Main {
     public static void main(String[] args) {
-        Graph graph = new Graph(7);
-        graph.addEdge(0, 1);
-        graph.addEdge(0, 4);
-        graph.addEdge(0, 5);
-        graph.addEdge(2, 1);
-        graph.addEdge(2, 3);
-        graph.addEdge(5, 6);
-        DepthFirstSearch dfs = new DepthFirstSearch(graph, 1);
+        System.out.print("> How many vertex will be inside graph : ");
+        Scanner scanner = new Scanner(System.in);
+        int v = scanner.nextInt();
+        GraphAL graph = new GraphAL(v);
+        Random random = new Random();
+        for (int i = 0; i < v/2; i++) {
+            graph.addEdge(random.nextInt(v), random.nextInt(v));
+        }
+        System.out.print("> What is the arbitrary source : ");
+        int s = scanner.nextInt();
+        scanner.close();
+        DepthFirstSearch dfs = new DepthFirstSearch(graph, s);
         for (int i : dfs.traversal()) {
             System.out.print(i + " -> ");
         }
