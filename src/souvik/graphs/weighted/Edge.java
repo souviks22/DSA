@@ -1,4 +1,4 @@
-package souvik.graphs.weightedAdjList;
+package souvik.graphs.weighted;
 
 public class Edge {
     private final int v, w;

@@ -1,13 +1,13 @@
-package souvik.graphs.weightedAdjList;
+package souvik.graphs.weighted;
 
 import souvik.support.List;
 
-public class WeightedGraph {
+public class WeightedALGraph {
     private final int vertex;
     private int edges;
     private final List<Edge>[] adj;
 
-    public WeightedGraph(int vertex) {
+    public WeightedALGraph(int vertex) {
         this.vertex = vertex;
         edges = 0;
         adj = (List<Edge>[]) new List[vertex];
