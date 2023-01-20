@@ -9,10 +9,10 @@ public class BreadthFirstSearch {
     private final Integer[] edgeTo;
     private final List<Integer> traversal;
 
-    private BreadthFirstSearch(int vertex, int source) {
+    private BreadthFirstSearch(int V, int source) {
         this.source = source;
-        marked = new boolean[vertex];
-        edgeTo = new Integer[vertex];
+        marked = new boolean[V];
+        edgeTo = new Integer[V];
         traversal = new List<>();
     }
 

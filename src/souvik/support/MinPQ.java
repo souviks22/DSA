@@ -2,12 +2,11 @@ package souvik.support;
 
 import java.util.Arrays;
 
-public class MinPriorityQueue<Key extends Comparable<Key>> {
+public class MinPQ<Key extends Comparable<Key>> {
     private Key[] pq;
     private int size, capacity;
 
-    public MinPriorityQueue() {
-        size = 0;
+    public MinPQ() {
         capacity = 1;
         pq = (Key[]) new Comparable[capacity];
     }
@@ -27,15 +26,15 @@ public class MinPriorityQueue<Key extends Comparable<Key>> {
         return pq[i - 1].compareTo(pq[j - 1]) > 0;
     }
 
-    private void swim(int heapOrder) {
-        while (heapOrder > 1 && greater(heapOrder / 2, heapOrder)) {
-            swap(heapOrder, heapOrder / 2);
-            heapOrder /= 2;
+    private void swim(int k) {
+        while (k > 1 && greater(k / 2, k)) {
+            swap(k, k / 2);
+            k /= 2;
         }
     }
 
-    private void sink(int heapOrder) {
-        int i = heapOrder * 2;
+    private void sink(int k) {
+        int i = k * 2;
         while (i <= size) {
             if (i < size && greater(i, i + 1)) i++;
             if (!greater(i / 2, i)) break;

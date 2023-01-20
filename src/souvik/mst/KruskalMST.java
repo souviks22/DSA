@@ -4,19 +4,19 @@ import souvik.graph.Edge;
 import souvik.graph.WeightedGraphAL;
 import souvik.graph.WeightedGraphAM;
 import souvik.support.List;
-import souvik.support.MinPriorityQueue;
+import souvik.support.MinPQ;
 import souvik.support.UnionFind;
 
 public class KruskalMST {
     private final List<Edge> mst;
     private double weight;
-    private final MinPriorityQueue<Edge> pq;
+    private final MinPQ<Edge> pq;
     private final UnionFind uf;
 
-    private KruskalMST(int vertex) {
+    private KruskalMST(int V) {
         mst = new List<>();
-        pq = new MinPriorityQueue<>();
-        uf = new UnionFind(vertex);
+        pq = new MinPQ<>();
+        uf = new UnionFind(V);
     }
 
     public KruskalMST(WeightedGraphAL weightedGraphAL) {

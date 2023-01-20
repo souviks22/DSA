@@ -9,10 +9,10 @@ public class DepthFirstSearch {
     private final Integer[] edgeTo;
     private final List<Integer> traversal;
 
-    private DepthFirstSearch(int vertex, int source) {
+    private DepthFirstSearch(int V, int source) {
         this.source = source;
-        marked = new boolean[vertex];
-        edgeTo = new Integer[vertex];
+        marked = new boolean[V];
+        edgeTo = new Integer[V];
         traversal = new List<>();
     }
 
