@@ -55,8 +55,8 @@ public class IndexMinPQ<Key extends Comparable<Key>> {
         int key = pq[0];
         swap(1, size--);
         sink(1);
-        qp[pq[size]] = null;
-        pq[size] = null;
+//        qp[pq[size]] = null;
+//        pq[size] = null;
         return key;
     }
 
