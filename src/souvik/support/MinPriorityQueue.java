@@ -55,7 +55,7 @@ public class MinPriorityQueue<Key extends Comparable<Key>> {
     }
 
     public Key dequeue() {
-        if(size == capacity/4) resizePq(0.5);
+        if (size == capacity / 4) resizePq(0.5);
         Key key = pq[0];
         swap(1, size--);
         sink(1);

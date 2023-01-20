@@ -18,8 +18,8 @@ public class WeightedGraphAL {
     public void addEdge(Edge e) {
         int v = e.either();
         int w = e.other(v);
-        adj[v].push_front(e);
-        adj[w].push_front(e);
+        adj[v].pushFront(e);
+        adj[w].pushFront(e);
         edges++;
     }
 

@@ -16,24 +16,24 @@ public class DepthFirstSearch {
         traversal = new List<>();
     }
 
-    public DepthFirstSearch(GraphAL graph, int source) {
-        this(graph.getVertex(), source);
-        dfs(graph);
+    public DepthFirstSearch(GraphAL graphAL, int source) {
+        this(graphAL.getVertex(), source);
+        dfs(graphAL);
     }
 
-    public DepthFirstSearch(GraphAM graph, int source) {
-        this(graph.getVertex(), source);
-        dfs(graph);
+    public DepthFirstSearch(GraphAM graphAM, int source) {
+        this(graphAM.getVertex(), source);
+        dfs(graphAM);
     }
 
-    private void dfs(GraphAL graph) {
+    private void dfs(GraphAL graphAL) {
         Stack<Integer> s = new Stack<>();
         s.push(source);
         while (!s.isEmpty()) {
             int v = s.pop();
             marked[v] = true;
-            traversal.push_back(v);
-            for (int w : graph.adj(v)) {
+            traversal.pushBack(v);
+            for (int w : graphAL.adj(v)) {
                 if (!marked[w]) {
                     s.push(w);
                     edgeTo[w] = v;
@@ -42,15 +42,15 @@ public class DepthFirstSearch {
         }
     }
 
-    private void dfs(GraphAM graph) {
+    private void dfs(GraphAM graphAM) {
         Stack<Integer> s = new Stack<>();
         s.push(source);
         while (!s.isEmpty()) {
             int v = s.pop();
             marked[v] = true;
-            traversal.push_back(v);
-            for (int w = 0; w < graph.getVertex(); w++) {
-                if (graph.adj(v)[w] && !marked[w]) {
+            traversal.pushBack(v);
+            for (int w = 0; w < graphAM.getVertex(); w++) {
+                if (graphAM.adj(v)[w] && !marked[w]) {
                     s.push(w);
                     edgeTo[w] = v;
                 }
@@ -70,9 +70,9 @@ public class DepthFirstSearch {
         if (!hasPathTo(v)) return null;
         List<Integer> path = new List<>();
         for (int i = v; i != source; i = edgeTo[i]) {
-            path.push_front(i);
+            path.pushFront(i);
         }
-        path.push_front(source);
+        path.pushFront(source);
         return path;
     }
 }

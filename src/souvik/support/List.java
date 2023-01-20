@@ -29,7 +29,7 @@ public class List<Key> implements Iterable<Key> {
         return size;
     }
 
-    public void push_front(Key key) {
+    public void pushFront(Key key) {
         if (isEmpty()) {
             head = new Node(key);
         } else {
@@ -40,7 +40,7 @@ public class List<Key> implements Iterable<Key> {
         size++;
     }
 
-    public void push_back(Key key) {
+    public void pushBack(Key key) {
         if (isEmpty()) {
             head = new Node(key);
         } else {

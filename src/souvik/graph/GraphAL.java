@@ -16,8 +16,8 @@ public class GraphAL {
     }
 
     public void addEdge(int v, int w) {
-        adj[v].push_front(w);
-        adj[w].push_front(v);
+        adj[v].pushFront(w);
+        adj[w].pushFront(v);
         edges++;
     }
 
