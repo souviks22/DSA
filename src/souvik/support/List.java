@@ -53,7 +53,7 @@ public class List<Key> implements Iterable<Key> {
         size++;
     }
 
-    public Key pop_front() {
+    public Key popFront() {
         if (isEmpty()) {
             throw new RuntimeException();
         }
@@ -63,7 +63,7 @@ public class List<Key> implements Iterable<Key> {
         return key;
     }
 
-    public Key pop_back() {
+    public Key popBack() {
         if (isEmpty()) {
             throw new RuntimeException();
         }

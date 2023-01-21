@@ -28,32 +28,33 @@ public class PrimMST {
         this(weightedGraphAL.getVertex());
         while (!pq.isEmpty() && mst.length() < weightedGraphAL.getVertex() - 1) {
             int v = pq.dequeue();
-            Edge edge = pq.keys(v);
-            mst.pushFront(edge);
-            weight += edge.getWeight();
             for (Edge e : weightedGraphAL.adj(v)) {
                 int w = e.other(v);
                 if (pq.keys(w).compareTo(e) > 0) {
                     pq.decreaseKey(w, e);
                 }
             }
+            if (v == 0) continue;
+            Edge edge = pq.keys(v);
+            mst.pushFront(edge);
+            weight += edge.getWeight();
         }
-        mst.pop_back();
     }
 
     public PrimMST(WeightedGraphAM weightedGraphAM) {
         this(weightedGraphAM.getVertex());
         while (!pq.isEmpty() && mst.length() < weightedGraphAM.getVertex() - 1) {
             int v = pq.dequeue();
-            Edge edge = pq.keys(v);
-            mst.pushFront(edge);
-            weight += edge.getWeight();
             for (int w = 0; w < weightedGraphAM.getVertex(); w++) {
                 Double weight = weightedGraphAM.adj(v)[w];
                 if (weight != null && pq.keys(w).getWeight() > weight) {
                     pq.decreaseKey(w, new Edge(w, v, weight));
                 }
             }
+            if (v == 0) continue;
+            Edge edge = pq.keys(v);
+            mst.pushFront(edge);
+            weight += edge.getWeight();
         }
     }
 
