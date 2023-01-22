@@ -47,7 +47,8 @@ public class PrimMST {
             int v = pq.dequeue();
             for (int w = 0; w < weightedGraphAM.getVertex(); w++) {
                 Double weight = weightedGraphAM.adj(v)[w];
-                if (weight != null && pq.keys(w).getWeight() > weight) {
+                if (weight == null) continue;
+                if (pq.keys(w).getWeight() > weight) {
                     pq.decreaseKey(w, new Edge(w, v, weight));
                 }
             }

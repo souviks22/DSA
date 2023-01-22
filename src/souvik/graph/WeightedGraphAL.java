@@ -23,6 +23,11 @@ public class WeightedGraphAL {
         edges++;
     }
 
+    public boolean hasEdge(Edge e){
+        int v = e.either();
+        return adj[v].contains(e);
+    }
+
     public List<Edge> adj(int v) {
         return adj[v];
     }

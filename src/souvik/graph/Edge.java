@@ -28,4 +28,12 @@ public class Edge implements Comparable<Edge> {
         return Double.compare(this.weight, that.weight);
     }
 
+    public boolean equals(Edge that) {
+        if (this.weight != that.weight) return false;
+        int v = that.either();
+        int w = that.other(v);
+        if (this.v == v) return this.w == w;
+        if (this.v == w) return this.w == v;
+        return false;
+    }
 }

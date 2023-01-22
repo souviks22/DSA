@@ -106,6 +106,32 @@ public class Main {
 //        }
 //        System.out.println("Weight of MST is " + tree.getWeight());
 
+        // Maximum Spanning Tree on Adjacency List Graph
+//        WeightedGraphAL graph = new WeightedGraphAL(V);
+//        for (int i = 0; i < V * 10; i++) {
+//            graph.addEdge(new Edge(random.nextInt(V), random.nextInt(V), random.nextDouble()));
+//        }
+//        MaximumSpanningTree tree = new MaximumSpanningTree(graph);
+//        for (Edge e : tree.mst()) {
+//            int v = e.either();
+//            int w = e.other(v);
+//            System.out.println(v + " - " + w);
+//        }
+//        System.out.println("Weight of MST is " + tree.getWeight());
+
+        // Maximum Spanning Tree on Adjacency Matrix Graph
+//        WeightedGraphAM graph = new WeightedGraphAM(V);
+//        for (int i = 0; i < V * 10; i++) {
+//            graph.addEdge(new Edge(random.nextInt(V), random.nextInt(V), random.nextDouble()));
+//        }
+//        MaximumSpanningTree tree = new MaximumSpanningTree(graph);
+//        for (Edge e : tree.mst()) {
+//            int v = e.either();
+//            int w = e.other(v);
+//            System.out.println(v + " - " + w);
+//        }
+//        System.out.println("Weight of MST is " + tree.getWeight());
+
         var end = System.currentTimeMillis();
         System.out.println("Time = " + (end - begin) + " ms");
     }

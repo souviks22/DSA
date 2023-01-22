@@ -29,6 +29,15 @@ public class List<Key> implements Iterable<Key> {
         return size;
     }
 
+    public boolean contains(Key key) {
+        Node temp = head;
+        while (temp != null) {
+            if (temp.key.equals(key)) return true;
+            temp = temp.next;
+        }
+        return false;
+    }
+
     public void pushFront(Key key) {
         if (isEmpty()) {
             head = new Node(key);

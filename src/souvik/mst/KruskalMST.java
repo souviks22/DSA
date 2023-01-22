@@ -35,9 +35,8 @@ public class KruskalMST {
         for (int v = 0; v < V; v++) {
             for (int w = 0; w < V; w++) {
                 Double weight = weightedGraphAM.adj(v)[w];
-                if (weight != null) {
-                    pq.enqueue(new Edge(v, w, weight));
-                }
+                if (weight == null) continue;
+                pq.enqueue(new Edge(v, w, weight));
             }
         }
         growMST(weightedGraphAM.getVertex());
