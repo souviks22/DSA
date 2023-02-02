@@ -18,8 +18,12 @@ public class BinarySearchTree<Key extends Comparable<Key>, Value> {
         }
     }
 
+    public BinarySearchTree(Node root) {
+        this.root = root;
+    }
+
     public BinarySearchTree() {
-        this.root = null;
+        this(null);
     }
 
     public Value find(Key key) {
