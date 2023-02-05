@@ -29,8 +29,9 @@ public class BinarySearchTree<Key extends Comparable<Key>, Value> {
     public Value find(Key key) {
         Node temp = root;
         while (temp != null) {
-            if (key.compareTo(temp.key) < 0) temp = temp.left;
-            else if (key.compareTo(temp.key) > 0) temp = temp.right;
+            int cmp = key.compareTo(temp.key);
+            if (cmp < 0) temp = temp.left;
+            else if (cmp > 0) temp = temp.right;
             else return temp.value;
         }
         return null;
@@ -42,8 +43,9 @@ public class BinarySearchTree<Key extends Comparable<Key>, Value> {
 
     private Node insert(Node node, Key key, Value value) {
         if (node == null) return new Node(key, value);
-        if (key.compareTo(node.key) < 0) node.left = insert(node.left, key, value);
-        else if (key.compareTo(node.key) > 0) node.right = insert(node.right, key, value);
+        int cmp = key.compareTo(node.key);
+        if (cmp < 0) node.left = insert(node.left, key, value);
+        else if (cmp > 0) node.right = insert(node.right, key, value);
         else node.value = value;
         node.size = size(node.left) + 1 + size(node.right);
         return node;
@@ -55,8 +57,9 @@ public class BinarySearchTree<Key extends Comparable<Key>, Value> {
 
     private Key floor(Node node, Key key) {
         if (node == null) return null;
-        if (key.compareTo(node.key) < 0) return floor(node.left, key);
-        if (key.compareTo(node.key) == 0) return node.key;
+        int cmp = key.compareTo(node.key);
+        if (cmp < 0) return floor(node.left, key);
+        if (cmp == 0) return node.key;
         Key possibleFloor = floor(node.right, key);
         if (possibleFloor != null) return possibleFloor;
         return node.key;
@@ -68,8 +71,9 @@ public class BinarySearchTree<Key extends Comparable<Key>, Value> {
 
     private Key ceil(Node node, Key key) {
         if (node == null) return null;
-        if (key.compareTo(node.key) > 0) return ceil(node.right, key);
-        if (key.compareTo(node.key) == 0) return node.key;
+        int cmp = key.compareTo(node.key);
+        if (cmp > 0) return ceil(node.right, key);
+        if (cmp == 0) return node.key;
         Key possibleCeil = ceil(node.left, key);
         if (possibleCeil != null) return possibleCeil;
         return node.key;
@@ -85,8 +89,9 @@ public class BinarySearchTree<Key extends Comparable<Key>, Value> {
     }
 
     private int rank(Node node, Key key) {
-        if (key.compareTo(node.key) < 0) return rank(node.left, key);
-        if (key.compareTo(node.key) > 0) return size(node.left) + rank(node.right, key);
+        int cmp = key.compareTo(node.key);
+        if (cmp < 0) return rank(node.left, key);
+        if (cmp > 0) return size(node.left) + rank(node.right, key);
         return size(node.left);
     }
 
@@ -107,8 +112,9 @@ public class BinarySearchTree<Key extends Comparable<Key>, Value> {
 
     private Node remove(Node node, Key key) {
         if (node == null) return null;
-        if (key.compareTo(node.key) < 0) node.left = remove(node.left, key);
-        else if (key.compareTo(node.key) > 0) node.right = remove(node.right, key);
+        int cmp = key.compareTo(node.key);
+        if (cmp < 0) node.left = remove(node.left, key);
+        else if (cmp > 0) node.right = remove(node.right, key);
         else {
             if (node.left == null) return node.right;
             if (node.right == null) return node.left;
