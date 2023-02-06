@@ -1,10 +1,18 @@
-import java.util.Random;
-
 public class Main {
     public static void main(String[] args) {
         var begin = System.currentTimeMillis();
-        int V = 1000;
-        Random random = new Random();
+
+        // Weighted Job Scheduling
+//        double[] p = {50, 20, 100, 200};
+//        int[] s = {1, 3, 6, 2};
+//        int[] e = {2, 5, 19, 100};
+//
+//        JobScheduling jobScheduling = new JobScheduling(p, s, e);
+//        System.out.println("Maximum Profit is Rs." + jobScheduling.maxProfit() + "/-");
+
+        // Graph
+//        int V = 1000;
+//        Random random = new Random();
 
         // Adjacency List DFS
 //        GraphAL graph = new GraphAL(V);
