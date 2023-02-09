@@ -2,6 +2,16 @@ public class Main {
     public static void main(String[] args) {
         var begin = System.currentTimeMillis();
 
+        // Topological Sort
+//        GraphAL graphAL = new GraphAL(10);
+//        for (int i = 1; i < 10; i++) {
+//            graphAL.addEdge(i, i - 1);
+//        }
+//        Topology topology = new Topology(graphAL);
+//        for (int i : topology.order()) {
+//            System.out.println(i);
+//        }
+
         // Weighted Job Scheduling
 //        double[] p = {50, 20, 100, 200};
 //        int[] s = {1, 3, 6, 2};
