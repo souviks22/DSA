@@ -66,12 +66,14 @@ public class IndexMinPQ<Key extends Comparable<Key>> {
     }
 
     public void decreaseKey(int i, Key key) {
+        assert key.compareTo(keys[i]) < 0;
         if (qp[i] == null) return;
         keys[i] = key;
         swim(qp[i]);
     }
 
     public void increaseKey(int i, Key key) {
+        assert key.compareTo(keys[i]) > 0;
         if (qp[i] == null) return;
         keys[i] = key;
         sink(qp[i]);
