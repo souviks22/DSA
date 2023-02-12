@@ -5,11 +5,10 @@ public class IndexMinPQ<Key extends Comparable<Key>> {
     private final Key[] keys;
     private int size;
 
-    public IndexMinPQ(int V, Key[] keys) {
-        assert keys.length == V;
+    public IndexMinPQ(int V) {
         pq = new Integer[V];
         qp = new Integer[V];
-        this.keys = keys;
+        keys = (Key[]) new Comparable[V];
     }
 
     private void swap(int i, int j) {
@@ -46,9 +45,10 @@ public class IndexMinPQ<Key extends Comparable<Key>> {
         return size == 0;
     }
 
-    public void enqueue(int v) {
+    public void enqueue(int v, Key key) {
         pq[size++] = v;
         qp[v] = size;
+        keys[v] = key;
         swim(size);
     }
 

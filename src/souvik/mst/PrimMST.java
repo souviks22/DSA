@@ -13,14 +13,10 @@ public class PrimMST {
 
     private PrimMST(int V) {
         mst = new List<>();
-        Edge[] edgeTo = new Edge[V];
-        edgeTo[0] = new Edge(0, 0, 0);
+        pq = new IndexMinPQ<>(V);
+        pq.enqueue(0,new Edge(0, 0, 0));
         for (int i = 1; i < V; i++) {
-            edgeTo[i] = new Edge(i, 0, Double.POSITIVE_INFINITY);
-        }
-        pq = new IndexMinPQ<>(V, edgeTo);
-        for (int i = 0; i < V; i++) {
-            pq.enqueue(i);
+            pq.enqueue(i,new Edge(i, 0, Double.POSITIVE_INFINITY));
         }
     }
 
