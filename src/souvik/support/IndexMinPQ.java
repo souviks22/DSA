@@ -6,6 +6,7 @@ public class IndexMinPQ<Key extends Comparable<Key>> {
     private int size;
 
     public IndexMinPQ(int V, Key[] keys) {
+        assert keys.length == V;
         pq = new Integer[V];
         qp = new Integer[V];
         this.keys = keys;
