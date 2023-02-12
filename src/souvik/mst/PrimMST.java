@@ -14,10 +14,8 @@ public class PrimMST {
     private PrimMST(int V) {
         mst = new List<>();
         pq = new IndexMinPQ<>(V);
-        pq.enqueue(0,new Edge(0, 0, 0));
-        for (int i = 1; i < V; i++) {
-            pq.enqueue(i,new Edge(i, 0, Double.POSITIVE_INFINITY));
-        }
+        pq.enqueue(0, new Edge(0, 0, 0));
+        for (int i = 1; i < V; i++) pq.enqueue(i, new Edge(i, 0, Double.POSITIVE_INFINITY));
     }
 
     public PrimMST(WeightedGraphAL weightedGraphAL) {
