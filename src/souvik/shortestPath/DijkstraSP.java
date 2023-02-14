@@ -10,6 +10,7 @@ public class DijkstraSP {
     private final DirectedEdge[] edgeTo;
 
     public DijkstraSP(WeightedDigraph weightedDigraph, int source) {
+        assert !hasNegativeEdge(weightedDigraph);
         int V = weightedDigraph.getVertex();
         pq = new IndexMinPQ<>(V);
         edgeTo = new DirectedEdge[V];
@@ -21,6 +22,15 @@ public class DijkstraSP {
             int v = pq.dequeue();
             for (DirectedEdge e : weightedDigraph.adj(v)) relax(e);
         }
+    }
+
+    private boolean hasNegativeEdge(WeightedDigraph weightedDigraph) {
+        for (int i = 0; i < weightedDigraph.getVertex(); i++) {
+            for (DirectedEdge e : weightedDigraph.adj(i)) {
+                if (e.getWeight() < 0) return true;
+            }
+        }
+        return false;
     }
 
     private void relax(DirectedEdge e) {
