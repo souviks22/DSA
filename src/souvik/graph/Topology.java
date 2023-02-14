@@ -7,7 +7,6 @@ public class Topology {
     private final boolean[] marked;
 
     public Topology(Digraph digraph) {
-        assert !hasCycle(digraph);
         reversePostOrder = new Stack<>();
         marked = new boolean[digraph.getVertex()];
         for (int v = 0; v < digraph.getVertex(); v++) {
@@ -46,37 +45,6 @@ public class Topology {
                 reversePostOrder.push(w);
             }
         }
-    }
-
-    public boolean hasCycle(Digraph digraph) {
-        boolean[] checked = new boolean[digraph.getVertex()];
-        Stack<Integer> s = new Stack<>();
-        s.push(0);
-        while (!s.isEmpty()) {
-            int v = s.pop();
-            checked[v] = true;
-            for (int w : digraph.adj(v)) {
-                if (checked[w]) return true;
-                s.push(w);
-            }
-        }
-        return false;
-    }
-
-    public boolean hasCycle(WeightedDigraph weightedDigraph) {
-        boolean[] checked = new boolean[weightedDigraph.getVertex()];
-        Stack<Integer> s = new Stack<>();
-        s.push(0);
-        while (!s.isEmpty()) {
-            int v = s.pop();
-            checked[v] = true;
-            for (DirectedEdge e : weightedDigraph.adj(v)) {
-                int w = e.to();
-                if (checked[w]) return true;
-                s.push(w);
-            }
-        }
-        return false;
     }
 
     public Stack<Integer> order() {
