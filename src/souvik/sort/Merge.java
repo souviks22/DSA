@@ -1,6 +1,9 @@
 package souvik.sort;
 
 public class Merge {
+    private Merge() {
+    }
+
     private static <Key extends Comparable<Key>> boolean less(Key[] arr, int i, int j) {
         return arr[i].compareTo(arr[j]) < 0;
     }
