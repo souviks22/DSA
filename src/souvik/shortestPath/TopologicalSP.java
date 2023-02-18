@@ -10,7 +10,9 @@ public class TopologicalSP {
     private final DirectedEdge[] edgeTo;
 
     public TopologicalSP(WeightedDigraph weightedDigraph, int source) {
-        assert !hasCycle(weightedDigraph);
+        if (hasCycle(weightedDigraph)) {
+            throw new IllegalArgumentException("Graph should not contain cycle(s).");
+        }
         int V = weightedDigraph.getVertex();
         distTo = new double[V];
         for (int i = 0; i < V; i++) distTo[i] = Double.POSITIVE_INFINITY;

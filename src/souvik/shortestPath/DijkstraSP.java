@@ -10,7 +10,9 @@ public class DijkstraSP {
     private final DirectedEdge[] edgeTo;
 
     public DijkstraSP(WeightedDigraph weightedDigraph, int source) {
-        assert !hasNegativeEdge(weightedDigraph);
+        if (hasNegativeEdge(weightedDigraph)) {
+            throw new IllegalArgumentException("Graph should not contain negative edge(s).");
+        }
         int V = weightedDigraph.getVertex();
         pq = new IndexMinPQ<>(V);
         edgeTo = new DirectedEdge[V];
