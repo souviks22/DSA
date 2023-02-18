@@ -1,6 +1,9 @@
 package souvik.sort;
 
 public class Insertion {
+    private Insertion() {
+    }
+
     private static <Key extends Comparable<Key>> boolean less(Key[] arr, int i, int j) {
         return arr[i].compareTo(arr[j]) < 0;
     }
