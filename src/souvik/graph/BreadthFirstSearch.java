@@ -17,12 +17,12 @@ public class BreadthFirstSearch {
     }
 
     public BreadthFirstSearch(GraphAL graphAL, int source) {
-        this(graphAL.getVertex(), source);
+        this(graphAL.vertices(), source);
         bfs(graphAL);
     }
 
     public BreadthFirstSearch(GraphAM graphAM, int source) {
-        this(graphAM.getVertex(), source);
+        this(graphAM.vertices(), source);
         bfs(graphAM);
     }
 
@@ -49,7 +49,7 @@ public class BreadthFirstSearch {
             int v = q.dequeue();
             marked[v] = true;
             traversal.pushBack(v);
-            for (int w = 0; w < graphAM.getVertex(); w++) {
+            for (int w = 0; w < graphAM.vertices(); w++) {
                 if (graphAM.adj(v)[w] && !marked[w]) {
                     q.enqueue(w);
                     edgeTo[w] = v;

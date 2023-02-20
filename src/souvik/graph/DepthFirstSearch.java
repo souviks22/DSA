@@ -17,12 +17,12 @@ public class DepthFirstSearch {
     }
 
     public DepthFirstSearch(GraphAL graphAL, int source) {
-        this(graphAL.getVertex(), source);
+        this(graphAL.vertices(), source);
         dfs(graphAL);
     }
 
     public DepthFirstSearch(GraphAM graphAM, int source) {
-        this(graphAM.getVertex(), source);
+        this(graphAM.vertices(), source);
         dfs(graphAM);
     }
 
@@ -49,7 +49,7 @@ public class DepthFirstSearch {
             int v = s.pop();
             marked[v] = true;
             traversal.pushBack(v);
-            for (int w = 0; w < graphAM.getVertex(); w++) {
+            for (int w = 0; w < graphAM.vertices(); w++) {
                 if (graphAM.adj(v)[w] && !marked[w]) {
                     s.push(w);
                     edgeTo[w] = v;

@@ -24,11 +24,11 @@ public class WeightedDigraph {
         return adj[v];
     }
 
-    public int getVertex() {
+    public int vertices() {
         return vertex;
     }
 
-    public int getEdges() {
+    public int edges() {
         return edges;
     }
 }

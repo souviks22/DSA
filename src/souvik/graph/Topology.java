@@ -8,8 +8,8 @@ public class Topology {
 
     public Topology(Digraph digraph) {
         reversePostOrder = new Stack<>();
-        marked = new boolean[digraph.getVertex()];
-        for (int v = 0; v < digraph.getVertex(); v++) {
+        marked = new boolean[digraph.vertices()];
+        for (int v = 0; v < digraph.vertices(); v++) {
             if (!marked[v]) {
                 dfs(digraph, v);
             }
@@ -18,8 +18,8 @@ public class Topology {
 
     public Topology(WeightedDigraph weightedDigraph) {
         reversePostOrder = new Stack<>();
-        marked = new boolean[weightedDigraph.getVertex()];
-        for (int v = 0; v < weightedDigraph.getVertex(); v++) {
+        marked = new boolean[weightedDigraph.vertices()];
+        for (int v = 0; v < weightedDigraph.vertices(); v++) {
             if (!marked[v]) {
                 dfs(weightedDigraph, v);
             }

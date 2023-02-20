@@ -20,18 +20,18 @@ public class KruskalMST {
     }
 
     public KruskalMST(WeightedGraphAL weightedGraphAL) {
-        this(weightedGraphAL.getVertex());
-        for (int v = 0; v < weightedGraphAL.getVertex(); v++) {
+        this(weightedGraphAL.vertices());
+        for (int v = 0; v < weightedGraphAL.vertices(); v++) {
             for (Edge e : weightedGraphAL.adj(v)) {
                 pq.enqueue(e);
             }
         }
-        growMST(weightedGraphAL.getVertex());
+        growMST(weightedGraphAL.vertices());
     }
 
     public KruskalMST(WeightedGraphAM weightedGraphAM) {
-        this(weightedGraphAM.getVertex());
-        int V = weightedGraphAM.getVertex();
+        this(weightedGraphAM.vertices());
+        int V = weightedGraphAM.vertices();
         for (int v = 0; v < V; v++) {
             for (int w = 0; w < V; w++) {
                 Double weight = weightedGraphAM.adj(v)[w];
@@ -39,7 +39,7 @@ public class KruskalMST {
                 pq.enqueue(new Edge(v, w, weight));
             }
         }
-        growMST(weightedGraphAM.getVertex());
+        growMST(weightedGraphAM.vertices());
     }
 
     private void growMST(int V) {
@@ -49,7 +49,7 @@ public class KruskalMST {
             int w = e.other(v);
             if (!uf.isConnected(v, w)) {
                 mst.pushFront(e);
-                weight += e.getWeight();
+                weight += e.weight();
                 uf.union(v, w);
             }
             pq.dequeue();

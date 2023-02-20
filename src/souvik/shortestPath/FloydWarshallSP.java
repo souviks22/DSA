@@ -7,13 +7,13 @@ public class FloydWarshallSP {
     private final double[][] distTo;
 
     public FloydWarshallSP(WeightedDigraph weightedDigraph) {
-        int V = weightedDigraph.getVertex();
+        int V = weightedDigraph.vertices();
         distTo = new double[V][V];
         for (int i = 0; i < V; i++) {
             for (int j = 0; j < V; j++) distTo[i][j] = Double.POSITIVE_INFINITY;
         }
         for (int v = 0; v < V; v++) {
-            for (DirectedEdge e : weightedDigraph.adj(v)) distTo[v][e.to()] = e.getWeight();
+            for (DirectedEdge e : weightedDigraph.adj(v)) distTo[v][e.to()] = e.weight();
         }
         for (int k = 0; k < V; k++) {
             for (int v = 0; v < V; v++) {

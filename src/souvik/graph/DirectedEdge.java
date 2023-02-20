@@ -23,7 +23,7 @@ public class DirectedEdge implements Comparable<DirectedEdge> {
         return this.from;
     }
 
-    public double getWeight() {
+    public double weight() {
         return weight;
     }
 

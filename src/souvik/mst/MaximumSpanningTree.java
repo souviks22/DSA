@@ -10,22 +10,22 @@ public class MaximumSpanningTree {
     PrimMST pTree;
 
     public MaximumSpanningTree(WeightedGraphAL weightedGraphAL) {
-        int V = weightedGraphAL.getVertex();
+        int V = weightedGraphAL.vertices();
         WeightedGraphAL negatedGraph = new WeightedGraphAL(V);
         for (int i = 0; i < V; i++) {
             for (Edge e : weightedGraphAL.adj(i)) {
                 int v = e.either();
                 int w = e.other(v);
-                Edge negatedEdge = new Edge(v, w, -e.getWeight());
+                Edge negatedEdge = new Edge(v, w, -e.weight());
                 if (!negatedGraph.hasEdge(negatedEdge)) negatedGraph.addEdge(negatedEdge);
             }
         }
-        if (weightedGraphAL.getEdges() < V) kTree = new KruskalMST(negatedGraph);
+        if (weightedGraphAL.edges() < V) kTree = new KruskalMST(negatedGraph);
         else pTree = new PrimMST(negatedGraph);
     }
 
     public MaximumSpanningTree(WeightedGraphAM weightedGraphAM) {
-        int V = weightedGraphAM.getVertex();
+        int V = weightedGraphAM.vertices();
         WeightedGraphAM negatedGraph = new WeightedGraphAM(V);
         for (int i = 0; i < V; i++) {
             for (int j = 0; j < V; j++) {
@@ -35,7 +35,7 @@ public class MaximumSpanningTree {
                 if (!negatedGraph.hasEdge(negatedEdge)) negatedGraph.addEdge(negatedEdge);
             }
         }
-        if (weightedGraphAM.getEdges() < V) kTree = new KruskalMST(negatedGraph);
+        if (weightedGraphAM.edges() < V) kTree = new KruskalMST(negatedGraph);
         else pTree = new PrimMST(negatedGraph);
     }
 

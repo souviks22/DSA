@@ -19,8 +19,8 @@ public class PrimMST {
     }
 
     public PrimMST(WeightedGraphAL weightedGraphAL) {
-        this(weightedGraphAL.getVertex());
-        while (!pq.isEmpty() && mst.length() < weightedGraphAL.getVertex() - 1) {
+        this(weightedGraphAL.vertices());
+        while (!pq.isEmpty() && mst.length() < weightedGraphAL.vertices() - 1) {
             int v = pq.dequeue();
             for (Edge e : weightedGraphAL.adj(v)) {
                 int w = e.other(v);
@@ -31,25 +31,25 @@ public class PrimMST {
             if (v == 0) continue;
             Edge edge = pq.keys(v);
             mst.pushFront(edge);
-            weight += edge.getWeight();
+            weight += edge.weight();
         }
     }
 
     public PrimMST(WeightedGraphAM weightedGraphAM) {
-        this(weightedGraphAM.getVertex());
-        while (!pq.isEmpty() && mst.length() < weightedGraphAM.getVertex() - 1) {
+        this(weightedGraphAM.vertices());
+        while (!pq.isEmpty() && mst.length() < weightedGraphAM.vertices() - 1) {
             int v = pq.dequeue();
-            for (int w = 0; w < weightedGraphAM.getVertex(); w++) {
+            for (int w = 0; w < weightedGraphAM.vertices(); w++) {
                 Double weight = weightedGraphAM.adj(v)[w];
                 if (weight == null) continue;
-                if (pq.keys(w).getWeight() > weight) {
+                if (pq.keys(w).weight() > weight) {
                     pq.decreaseKey(w, new Edge(w, v, weight));
                 }
             }
             if (v == 0) continue;
             Edge edge = pq.keys(v);
             mst.pushFront(edge);
-            weight += edge.getWeight();
+            weight += edge.weight();
         }
     }
 

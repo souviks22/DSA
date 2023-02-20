@@ -13,7 +13,7 @@ public class DijkstraSP {
         if (hasNegativeEdge(weightedDigraph)) {
             throw new IllegalArgumentException("Graph should not contain negative edge(s).");
         }
-        int V = weightedDigraph.getVertex();
+        int V = weightedDigraph.vertices();
         pq = new IndexMinPQ<>(V);
         edgeTo = new DirectedEdge[V];
         for (int i = 0; i < V; i++) {
@@ -27,9 +27,9 @@ public class DijkstraSP {
     }
 
     private boolean hasNegativeEdge(WeightedDigraph weightedDigraph) {
-        for (int i = 0; i < weightedDigraph.getVertex(); i++) {
+        for (int i = 0; i < weightedDigraph.vertices(); i++) {
             for (DirectedEdge e : weightedDigraph.adj(i)) {
-                if (e.getWeight() < 0) return true;
+                if (e.weight() < 0) return true;
             }
         }
         return false;
@@ -37,8 +37,8 @@ public class DijkstraSP {
 
     private void relax(DirectedEdge e) {
         int v = e.from(), w = e.to();
-        if (pq.keys(v) + e.getWeight() < pq.keys(w)) {
-            pq.decreaseKey(w, pq.keys(v) + e.getWeight());
+        if (pq.keys(v) + e.weight() < pq.keys(w)) {
+            pq.decreaseKey(w, pq.keys(v) + e.weight());
             edgeTo[w] = e;
         }
     }

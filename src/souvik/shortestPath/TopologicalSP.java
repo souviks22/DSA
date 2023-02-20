@@ -13,7 +13,7 @@ public class TopologicalSP {
         if (hasCycle(weightedDigraph)) {
             throw new IllegalArgumentException("Graph should not contain cycle(s).");
         }
-        int V = weightedDigraph.getVertex();
+        int V = weightedDigraph.vertices();
         distTo = new double[V];
         for (int i = 0; i < V; i++) distTo[i] = Double.POSITIVE_INFINITY;
         distTo[source] = 0;
@@ -25,12 +25,12 @@ public class TopologicalSP {
     }
 
     private boolean hasCycle(WeightedDigraph weightedDigraph) {
-        boolean[] checked = new boolean[weightedDigraph.getVertex()];
+        boolean[] checked = new boolean[weightedDigraph.vertices()];
         Stack<Integer> s = new Stack<>();
-        for (int v = 0; v < weightedDigraph.getVertex(); v++) {
+        for (int v = 0; v < weightedDigraph.vertices(); v++) {
             if (checked[v]) continue;
             checked[v] = true;
-            boolean[] marked = new boolean[weightedDigraph.getVertex()];
+            boolean[] marked = new boolean[weightedDigraph.vertices()];
             s.push(v);
             while (!s.isEmpty()) {
                 int w = s.pop();
@@ -45,8 +45,8 @@ public class TopologicalSP {
 
     private void relax(DirectedEdge e) {
         int v = e.from(), w = e.to();
-        if (distTo[v] + e.getWeight() < distTo[w]) {
-            distTo[w] = distTo[v] + e.getWeight();
+        if (distTo[v] + e.weight() < distTo[w]) {
+            distTo[w] = distTo[v] + e.weight();
             edgeTo[w] = e;
         }
     }

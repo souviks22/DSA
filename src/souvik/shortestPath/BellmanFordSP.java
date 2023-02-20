@@ -11,7 +11,7 @@ public class BellmanFordSP {
     private final boolean hasNegativeCycle;
 
     public BellmanFordSP(WeightedDigraph weightedDigraph, int source) {
-        int V = weightedDigraph.getVertex();
+        int V = weightedDigraph.vertices();
         distTo = new double[V];
         for (int i = 0; i < V; i++) distTo[i] = Double.POSITIVE_INFINITY;
         distTo[source] = 0;
@@ -26,16 +26,16 @@ public class BellmanFordSP {
 
     private void relax(DirectedEdge e) {
         int v = e.from(), w = e.to();
-        if (distTo[v] + e.getWeight() < distTo[w]) {
-            distTo[w] = distTo[v] + e.getWeight();
+        if (distTo[v] + e.weight() < distTo[w]) {
+            distTo[w] = distTo[v] + e.weight();
             edgeTo[w] = e;
         }
     }
 
     private boolean isHasNegativeCycle(WeightedDigraph weightedDigraph) {
-        for (int v = 0; v < weightedDigraph.getVertex(); v++) {
+        for (int v = 0; v < weightedDigraph.vertices(); v++) {
             for (DirectedEdge e : weightedDigraph.adj(v)) {
-                if (distTo[e.from()] + e.getWeight() < distTo[e.to()]) return true;
+                if (distTo[e.from()] + e.weight() < distTo[e.to()]) return true;
             }
         }
         return false;

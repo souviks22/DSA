@@ -13,7 +13,7 @@ public class WeightedGraphAM {
     public void addEdge(Edge e) {
         int v = e.either();
         int w = e.other(v);
-        adj[v][w] = adj[w][v] = e.getWeight();
+        adj[v][w] = adj[w][v] = e.weight();
         edges++;
     }
 
@@ -27,11 +27,11 @@ public class WeightedGraphAM {
         return adj[v];
     }
 
-    public int getVertex() {
+    public int vertices() {
         return vertex;
     }
 
-    public int getEdges() {
+    public int edges() {
         return edges;
     }
 }
