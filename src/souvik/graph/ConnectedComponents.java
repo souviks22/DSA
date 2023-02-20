@@ -1,12 +1,54 @@
 package souvik.graph;
 
 public class ConnectedComponents {
-    private final int[] id;
     private final boolean[] marked;
+    private final int[] id;
     private int count;
 
     public ConnectedComponents(GraphAL graphAL) {
-        id = new int[graphAL.vertices()];
         marked = new boolean[graphAL.vertices()];
+        id = new int[graphAL.vertices()];
+        for (int v = 0; v < graphAL.vertices(); v++) {
+            if (!marked[v]) {
+                visit(graphAL, v);
+                count++;
+            }
+        }
+    }
+
+    public ConnectedComponents(WeightedGraphAL weightedGraphAL) {
+        marked = new boolean[weightedGraphAL.vertices()];
+        id = new int[weightedGraphAL.vertices()];
+        for (int v = 0; v < weightedGraphAL.vertices(); v++) {
+            if (!marked[v]) {
+                visit(weightedGraphAL, v);
+                count++;
+            }
+        }
+    }
+
+    private void visit(GraphAL graphAL, int v) {
+        marked[v] = true;
+        id[v] = count;
+        for (int w : graphAL.adj(v)) {
+            if (!marked[w]) visit(graphAL, w);
+        }
+    }
+
+    private void visit(WeightedGraphAL weightedGraphAL, int v) {
+        marked[v] = true;
+        id[v] = count;
+        for (Edge e : weightedGraphAL.adj(v)) {
+            int w = e.other(v);
+            if (!marked[w]) visit(weightedGraphAL, w);
+        }
+    }
+
+    public int id(int v) {
+        return id[v];
+    }
+
+    public boolean isConnected(int v, int w) {
+        return id[v] == id[w];
     }
 }
