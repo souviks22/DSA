@@ -2,12 +2,12 @@ public class Main {
     public static void main(String[] args) {
         var begin = System.currentTimeMillis();
 
-        // Topological Sort
-//        GraphAL graphAL = new GraphAL(10);
+//         Topological Sort
+//        Digraph digraph = new Digraph(10);
 //        for (int i = 1; i < 10; i++) {
-//            graphAL.addEdge(i, i - 1);
+//            digraph.addEdge(i - 1, i);
 //        }
-//        Topology topology = new Topology(graphAL);
+//        Topology topology = new Topology(digraph);
 //        for (int i : topology.order()) {
 //            System.out.println(i);
 //        }
