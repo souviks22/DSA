@@ -31,4 +31,15 @@ public class WeightedDigraph {
     public int edges() {
         return edges;
     }
+
+    public WeightedDigraph reverse() {
+        WeightedDigraph reverseDigraph = new WeightedDigraph(vertex);
+        for (int v = 0; v < vertex; v++) {
+            for (DirectedEdge e : adj[v]) {
+                DirectedEdge reverseEdge = new DirectedEdge(e.to(), e.from(), e.weight());
+                reverseDigraph.addEdge(reverseEdge);
+            }
+        }
+        return reverseDigraph;
+    }
 }

@@ -31,5 +31,15 @@ public class Digraph {
     public int edges() {
         return edges;
     }
+
+    public Digraph reverse() {
+        Digraph reverseDigraph = new Digraph(vertex);
+        for (int v = 0; v < vertex; v++) {
+            for (int w : adj[v]) {
+                reverseDigraph.addEdge(w, v);
+            }
+        }
+        return reverseDigraph;
+    }
 }
 
