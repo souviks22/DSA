@@ -18,11 +18,6 @@ public class DirectedEdge implements Comparable<DirectedEdge> {
         return to;
     }
 
-    public int other(int v) {
-        if (this.from == v) return to;
-        return this.from;
-    }
-
     public double weight() {
         return weight;
     }
