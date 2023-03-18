@@ -29,14 +29,15 @@ public class BreadthFirstSearch {
     private void bfs(GraphAL graphAL) {
         Queue<Integer> q = new Queue<>();
         q.enqueue(source);
+        marked[source] = true;
         while (!q.isEmpty()) {
             int v = q.dequeue();
-            marked[v] = true;
             traversal.pushBack(v);
             for (int w : graphAL.adj(v)) {
                 if (!marked[w]) {
-                    q.enqueue(w);
+                    marked[v] = true;
                     edgeTo[w] = v;
+                    q.enqueue(w);
                 }
             }
         }
@@ -45,14 +46,15 @@ public class BreadthFirstSearch {
     private void bfs(GraphAM graphAM) {
         Queue<Integer> q = new Queue<>();
         q.enqueue(source);
+        marked[source] = true;
         while (!q.isEmpty()) {
             int v = q.dequeue();
-            marked[v] = true;
             traversal.pushBack(v);
             for (int w = 0; w < graphAM.vertices(); w++) {
                 if (graphAM.adj(v)[w] && !marked[w]) {
-                    q.enqueue(w);
+                    marked[v] = true;
                     edgeTo[w] = v;
+                    q.enqueue(w);
                 }
             }
         }

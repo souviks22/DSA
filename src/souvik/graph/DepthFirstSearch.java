@@ -29,14 +29,15 @@ public class DepthFirstSearch {
     private void dfs(GraphAL graphAL) {
         Stack<Integer> s = new Stack<>();
         s.push(source);
+        marked[source] = true;
         while (!s.isEmpty()) {
             int v = s.pop();
-            marked[v] = true;
             traversal.pushBack(v);
             for (int w : graphAL.adj(v)) {
                 if (!marked[w]) {
-                    s.push(w);
+                    marked[v] = true;
                     edgeTo[w] = v;
+                    s.push(w);
                 }
             }
         }
@@ -45,14 +46,15 @@ public class DepthFirstSearch {
     private void dfs(GraphAM graphAM) {
         Stack<Integer> s = new Stack<>();
         s.push(source);
+        marked[source] = true;
         while (!s.isEmpty()) {
             int v = s.pop();
-            marked[v] = true;
             traversal.pushBack(v);
             for (int w = 0; w < graphAM.vertices(); w++) {
                 if (graphAM.adj(v)[w] && !marked[w]) {
-                    s.push(w);
+                    marked[v] = true;
                     edgeTo[w] = v;
+                    s.push(w);
                 }
             }
         }
