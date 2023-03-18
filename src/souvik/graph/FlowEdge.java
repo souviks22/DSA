@@ -9,7 +9,7 @@ public class FlowEdge {
         this.v = v;
         this.w = w;
         this.capacity = capacity;
-        flow = 0;
+        this.flow = 0;
     }
 
     public int from() {
@@ -18,6 +18,14 @@ public class FlowEdge {
 
     public int to() {
         return w;
+    }
+
+    public int capacity() {
+        return capacity;
+    }
+
+    public int flow() {
+        return flow;
     }
 
     public int other(int s) {
@@ -32,7 +40,7 @@ public class FlowEdge {
         else throw new IllegalArgumentException();
     }
 
-    public void augmentResidualCapacityTo(int s, int amount) {
+    public void augmentResidualFlowTo(int s, int amount) {
         if (s == v) flow -= amount;
         else if (s == w) flow += amount;
         else throw new IllegalArgumentException();
