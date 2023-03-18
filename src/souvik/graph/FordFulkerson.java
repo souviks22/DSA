@@ -4,23 +4,27 @@ import souvik.support.List;
 import souvik.support.Queue;
 
 public class FordFulkerson {
-    private int maxFlow;
-    private List<FlowEdge> minCut;
     private boolean[] marked;
     private FlowEdge[] edgeTo;
+    private int maxFlow;
+    private List<FlowEdge> minCut;
 
     public FordFulkerson(FlowNetwork flowNetwork, int s, int t) {
         while (hasAugmentingPath(flowNetwork, s, t)) {
             double bottleneckCapacity = Double.POSITIVE_INFINITY;
-            for (int v = s; v != t; v = edgeTo[v].other(v)) {
-                bottleneckCapacity = Math.min(bottleneckCapacity, edgeTo[v].residualCapacityTo(edgeTo[v].other(v)));
+            for (int v = t; v != s; v = edgeTo[v].other(v)) {
+                bottleneckCapacity = Math.min(bottleneckCapacity, edgeTo[v].residualCapacityTo(v));
             }
-            for (int v = s; v != t; v = edgeTo[v].other(v)) {
-                edgeTo[v].augmentResidualCapacityTo(edgeTo[v].other(v), (int) bottleneckCapacity);
+            for (int v = t; v != s; v = edgeTo[v].other(v)) {
+                edgeTo[v].augmentResidualFlowTo(v, (int) bottleneckCapacity);
             }
             maxFlow += (int) bottleneckCapacity;
         }
-        findMinCut(flowNetwork, s);
+        minCut = new List<>();
+        for (int i = 0; i < flowNetwork.vertices(); i++) {
+            if (edgeTo[i] == null) continue;
+            minCut.pushFront(edgeTo[i]);
+        }
     }
 
     private boolean hasAugmentingPath(FlowNetwork flowNetwork, int s, int t) {
@@ -29,35 +33,23 @@ public class FordFulkerson {
 
         Queue<Integer> queue = new Queue<>();
         queue.enqueue(s);
+        marked[s] = true;
         while (!queue.isEmpty()) {
             int v = queue.dequeue();
-            marked[v] = true;
             for (FlowEdge e : flowNetwork.adj(v)) {
                 int w = e.other(v);
-                if (!marked[w] && e.residualCapacityTo(w) != 0) {
-                    queue.enqueue(w);
+                if (!marked[w] && e.residualCapacityTo(w) > 0) {
+                    marked[v] = true;
                     edgeTo[w] = e;
+                    queue.enqueue(w);
                 }
             }
         }
         return marked[t];
     }
 
-    private void findMinCut(FlowNetwork flowNetwork, int s) {
-        minCut = new List<>();
-        marked = new boolean[flowNetwork.vertices()];
-        dfs(flowNetwork, s);
-    }
-
-    private void dfs(FlowNetwork flowNetwork, int v) {
-        marked[v] = true;
-        for (FlowEdge e : flowNetwork.adj(v)) {
-            int w = e.other(v);
-            if (!marked[w] && e.residualCapacityTo(w) != 0) {
-                minCut.pushFront(e);
-                dfs(flowNetwork, w);
-            }
-        }
+    public boolean inMinCut(int v) {
+        return marked[v];
     }
 
     public int getMaxFlow() {
