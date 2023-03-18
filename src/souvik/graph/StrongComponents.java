@@ -1,7 +1,5 @@
 package souvik.graph;
 
-import souvik.support.Stack;
-
 public class StrongComponents {
     private final boolean[] marked;
     private final int[] scc;
@@ -13,23 +11,8 @@ public class StrongComponents {
         Topology tp = new Topology(digraph.reverse());
         for (int v : tp.order()) {
             if (!marked[v]) {
-                dfs(digraph, v);
+                visit(digraph, v);
                 count++;
-            }
-        }
-    }
-
-    private void dfs(Digraph digraph, int source) {
-        Stack<Integer> stack = new Stack<>();
-        stack.push(source);
-        while (!stack.isEmpty()) {
-            int v = stack.pop();
-            marked[v] = true;
-            scc[v] = count;
-            for (int w : digraph.adj(v)) {
-                if (!marked[w]) {
-                    stack.push(w);
-                }
             }
         }
     }
@@ -40,24 +23,26 @@ public class StrongComponents {
         Topology tp = new Topology(weightedDigraph.reverse());
         for (int v : tp.order()) {
             if (!marked[v]) {
-                dfs(weightedDigraph, v);
+                visit(weightedDigraph, v);
                 count++;
             }
         }
     }
 
-    private void dfs(WeightedDigraph weightedDigraph, int source) {
-        Stack<Integer> stack = new Stack<>();
-        stack.push(source);
-        while (!stack.isEmpty()) {
-            int v = stack.pop();
-            marked[v] = true;
-            scc[v] = count;
-            for (DirectedEdge e : weightedDigraph.adj(v)) {
-                if (!marked[e.to()]) {
-                    stack.push(e.to());
-                }
-            }
+    private void visit(Digraph digraph, int v) {
+        marked[v] = true;
+        scc[v] = count;
+        for (int w : digraph.adj(v)) {
+            if (!marked[w]) visit(digraph, w);
+        }
+    }
+
+    private void visit(WeightedDigraph weightedDigraph, int v) {
+        marked[v] = true;
+        scc[v] = count;
+        for (DirectedEdge e : weightedDigraph.adj(v)) {
+            int w = e.to();
+            if (!marked[w]) visit(weightedDigraph, w);
         }
     }
 
