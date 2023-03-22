@@ -7,7 +7,7 @@ public class FordFulkerson {
     private boolean[] marked;
     private FlowEdge[] edgeTo;
     private int maxFlow;
-    private List<FlowEdge> minCut;
+    private final List<FlowEdge> minCut;
 
     public FordFulkerson(FlowNetwork flowNetwork, int s, int t) {
         while (hasAugmentingPath(flowNetwork, s, t)) {
