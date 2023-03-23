@@ -2,6 +2,16 @@ public class Main {
     public static void main(String[] args) {
         var begin = System.currentTimeMillis();
 
+        // Matrix Chain Multiplication
+//        int[] arr = new int[100];
+//        Random random = new Random();
+//        for (int i = 0; i < arr.length; i++) {
+//            arr[i] = random.nextInt(1, 10);
+//        }
+//        System.out.println(Arrays.toString(arr));
+//        MatrixChainMultiplication matrixChainMultiplication = new MatrixChainMultiplication(arr);
+//        System.out.println("Minimum number of element multiplications is " + matrixChainMultiplication.getMinMultiplications());
+
 //         Topological Sort
 //        Digraph digraph = new Digraph(10);
 //        for (int i = 1; i < 10; i++) {
