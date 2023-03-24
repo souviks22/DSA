@@ -3,7 +3,7 @@ public class Main {
         var begin = System.currentTimeMillis();
 
         // Matrix Chain Multiplication
-//        int[] arr = new int[100];
+//        int[] arr = new int[27];
 //        Random random = new Random();
 //        for (int i = 0; i < arr.length; i++) {
 //            arr[i] = random.nextInt(1, 10);
@@ -11,6 +11,7 @@ public class Main {
 //        System.out.println(Arrays.toString(arr));
 //        MatrixChainMultiplication matrixChainMultiplication = new MatrixChainMultiplication(arr);
 //        System.out.println("Minimum number of element multiplications is " + matrixChainMultiplication.getMinMultiplications());
+//        System.out.println("Required order of matrix multiplication is " + matrixChainMultiplication.getMultiplicationOrder());
 
 //         Topological Sort
 //        Digraph digraph = new Digraph(10);
