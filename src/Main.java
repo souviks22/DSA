@@ -2,6 +2,10 @@ public class Main {
     public static void main(String[] args) {
         var begin = System.currentTimeMillis();
 
+        // N Queens
+//        NQueen nQueen = new NQueen(20);
+//        nQueen.printBoard();
+
         // Matrix Chain Multiplication
 //        int[] arr = new int[27];
 //        Random random = new Random();
