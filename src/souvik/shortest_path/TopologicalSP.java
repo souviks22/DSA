@@ -1,4 +1,4 @@
-package souvik.shortestPath;
+package souvik.shortest_path;
 
 import souvik.graph.DirectedEdge;
 import souvik.graph.Topology;
