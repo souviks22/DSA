@@ -15,30 +15,36 @@ public final class MyString implements Comparable<MyString> {
     }
 
     public char charAt(int index) {
+        if (index >= length) return '\0';
         return values[offset + index];
     }
 
     public int indexOf(char c) {
-        for (int i = offset; i < offset + length; i++) {
-            if (values[i] == c) return i;
+        for (int i = 0; i < length; i++) {
+            if (charAt(i) == c) return i;
         }
         return -1;
     }
 
     public MyString substring(int from, int to) {
-        return new MyString(values, offset + from, to - length);
+        if (to > length) return null;
+        return new MyString(values, offset + from, to - from);
     }
 
     public MyString substring(int from) {
-        return substring(from, offset + length);
+        return substring(from, length);
     }
 
     public MyString concat(MyString that) {
         char[] con = new char[this.length + that.length];
         int i = 0;
-        for (int j = 0; i < this.length; j++) con[i++] = this.charAt(j);
-        for (int j = 0; i < that.length; j++) con[i++] = that.charAt(j);
+        for (int j = 0; j < this.length; j++) con[i++] = this.charAt(j);
+        for (int j = 0; j < that.length; j++) con[i++] = that.charAt(j);
         return new MyString(con);
+    }
+
+    public MyString concat(char... values) {
+        return concat(new MyString(values));
     }
 
     public MyString lowercase() {
