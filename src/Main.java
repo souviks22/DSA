@@ -1,16 +1,22 @@
+import souvik.string.MSD;
+import souvik.string.MyString;
+
+import java.util.Arrays;
+
 public class Main {
     public static void main(String[] args) {
         var begin = System.currentTimeMillis();
 
-        // LSD
-//        MyString[] myStrings = {
-//                new MyString("facebook"),
-//                new MyString("adobe"),
-//                new MyString("tcs"),
-//                new MyString("google")
-//        };
+        // String Sort
+        MyString[] myStrings = {
+                new MyString("facebook"),
+                new MyString("adobe"),
+                new MyString("tcs"),
+                new MyString("google")
+        };
 //        LSD.sort(myStrings);
-//        System.out.println(Arrays.toString(myStrings));
+//        MSD.sort(myStrings);
+        System.out.println(Arrays.toString(myStrings));
 
 
         // Key Indexed Counting
