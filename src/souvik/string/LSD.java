@@ -3,6 +3,8 @@ package souvik.string;
 import java.util.Arrays;
 
 public class LSD {
+    private static final int R = 256;
+
     private LSD() {
     }
 
@@ -11,7 +13,6 @@ public class LSD {
         for (MyString str : arr) {
             if (str.length() > maxLength) maxLength = str.length();
         }
-        final int R = 256;
         for (int d = maxLength - 1; d >= 0; d--) {
             int[] count = new int[R + 1];
             MyString[] aux = Arrays.copyOf(arr, arr.length);

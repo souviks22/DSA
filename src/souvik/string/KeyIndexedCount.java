@@ -3,11 +3,12 @@ package souvik.string;
 import java.util.Arrays;
 
 public class KeyIndexedCount {
+    private static final int R = 256;
+
     private KeyIndexedCount() {
     }
 
     public static void sort(char[] arr) {
-        final int R = 256;
         int[] count = new int[R + 1];
         char[] aux = Arrays.copyOf(arr, arr.length);
         for (char c : aux) count[c + 1]++;
