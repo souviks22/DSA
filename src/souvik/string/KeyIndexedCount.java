@@ -14,4 +14,10 @@ public class KeyIndexedCount {
         for (int i = 0; i < R; i++) count[i + 1] += count[i];
         for (char c : aux) arr[count[c]++] = c;
     }
+
+    public static char[] sort(String str) {
+        char[] arr = str.toCharArray();
+        sort(arr);
+        return arr;
+    }
 }
