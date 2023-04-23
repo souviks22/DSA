@@ -2,6 +2,11 @@ public class Main {
     public static void main(String[] args) {
         var begin = System.currentTimeMillis();
 
+        // Key Indexed Counting
+//        char[] arr = {'c','d','a','e','f','b'};
+//        KeyIndexedCount.sort(arr);
+//        System.out.println(Arrays.toString(arr));
+
         // MyString
 //        MyString myString = new MyString('s', 'o', 'u', 'v', 'i', 'k', ' ', 's', 'a', 'r', 'k', 'a', 'r');
 //        MyString sub = myString.substring(7);
