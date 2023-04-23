@@ -6,7 +6,7 @@ public class KeyIndexedCount {
     private KeyIndexedCount() {
     }
 
-    public void sort(char[] arr) {
+    public static void sort(char[] arr) {
         final int R = 256;
         int[] count = new int[R + 1];
         char[] aux = Arrays.copyOf(arr, arr.length);
