@@ -2,6 +2,18 @@ public class Main {
     public static void main(String[] args) {
         var begin = System.currentTimeMillis();
 
+        // MyString
+//        MyString myString = new MyString('s', 'o', 'u', 'v', 'i', 'k', ' ', 's', 'a', 'r', 'k', 'a', 'r');
+//        MyString sub = myString.substring(7);
+//        MyString con = sub.concat(' ', '0', '0', '7');
+//        MyString up = myString.uppercase();
+//        myString.print();
+//        sub.print();
+//        con.print();
+//        up.print();
+//        if (myString.compareTo(sub) > 0) System.out.println("MyString is bigger");
+//        else System.out.println("Sub is bigger");
+
         // N Queens
 //        NQueen nQueen = new NQueen(20);
 //        nQueen.printBoard();
