@@ -2,20 +2,33 @@ public class Main {
     public static void main(String[] args) {
         var begin = System.currentTimeMillis();
 
+        // LSD
+//        MyString[] myStrings = {
+//                new MyString("facebook"),
+//                new MyString("adobe"),
+//                new MyString("tcs"),
+//                new MyString("google")
+//        };
+//        LSD.sort(myStrings);
+//        System.out.println(Arrays.toString(myStrings));
+
+
         // Key Indexed Counting
 //        char[] arr = {'c','d','a','e','f','b'};
 //        KeyIndexedCount.sort(arr);
 //        System.out.println(Arrays.toString(arr));
+//        char[] sorted = KeyIndexedCount.sort("souvik");
+//        System.out.println(Arrays.toString(sorted));
 
         // MyString
-//        MyString myString = new MyString('s', 'o', 'u', 'v', 'i', 'k', ' ', 's', 'a', 'r', 'k', 'a', 'r');
-//        MyString sub = myString.substring(7);
-//        MyString con = sub.concat(' ', '0', '0', '7');
+//        MyString myString = new MyString("Souvik Sarkar");
+//        System.out.println(myString);
+//        MyString sub = myString.substring(0, 6);
+//        System.out.println(sub);
+//        MyString con = sub.concat("007");
+//        System.out.println(con);
 //        MyString up = myString.uppercase();
-//        myString.print();
-//        sub.print();
-//        con.print();
-//        up.print();
+//        System.out.println(up);
 //        if (myString.compareTo(sub) > 0) System.out.println("MyString is bigger");
 //        else System.out.println("Sub is bigger");
 
