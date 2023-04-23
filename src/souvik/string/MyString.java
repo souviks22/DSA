@@ -14,9 +14,17 @@ public final class MyString implements Comparable<MyString> {
         this(values, 0, values.length);
     }
 
+    public MyString(String str) {
+        this(str.toCharArray());
+    }
+
     public char charAt(int index) {
         if (index >= length) return '\0';
         return values[offset + index];
+    }
+
+    public int length() {
+        return length;
     }
 
     public int indexOf(char c) {
@@ -47,6 +55,10 @@ public final class MyString implements Comparable<MyString> {
         return concat(new MyString(values));
     }
 
+    public MyString concat(String str) {
+        return concat(str.toCharArray());
+    }
+
     public MyString lowercase() {
         char[] lo = new char[length];
         int i = 0;
@@ -61,13 +73,12 @@ public final class MyString implements Comparable<MyString> {
         return new MyString(up);
     }
 
-    public void print() {
-        for (int i = 0; i < length; i++) {
-            System.out.print(charAt(i));
-        }
-        System.out.println();
+    @Override
+    public String toString() {
+        return new String(values, offset, length);
     }
 
+    @Override
     public int compareTo(MyString that) {
         int len = Math.min(this.length, that.length);
         for (int i = 0; i < len; i++) {
