@@ -2,6 +2,13 @@ public class Main {
     public static void main(String[] args) {
         var begin = System.currentTimeMillis();
 
+        // Trie
+//        Trie trie = new Trie();
+//        trie.put("souvik",7);
+//        System.out.println(trie.get("souvik"));
+//        trie.delete("souvik");
+//        System.out.println(trie.get("souvik"));
+
         // String Sort
 //        MyString[] myStrings = {
 //                new MyString("facebook"),
