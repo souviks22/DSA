@@ -1,19 +1,17 @@
-import souvik.string.TernarySearchTrie;
-
 public class Main {
     public static void main(String[] args) {
         var begin = System.currentTimeMillis();
 
         // Ternary Search Trie
-        TernarySearchTrie tst = new TernarySearchTrie();
-        tst.put("souvik",7);
-        System.out.println(tst.get("souvik"));
-        tst.delete("souvik");
-        System.out.println(tst.get("souvik"));
+//        TernarySearchTrie<Integer> tst = new TernarySearchTrie<>();
+//        tst.put("souvik", 7);
+//        System.out.println(tst.get("souvik"));
+//        tst.delete("souvik");
+//        System.out.println(tst.get("souvik"));
 
         // Trie
-//        Trie trie = new Trie();
-//        trie.put("souvik",7);
+//        Trie<Integer> trie = new Trie<>();
+//        trie.put("souvik", 7);
 //        System.out.println(trie.get("souvik"));
 //        trie.delete("souvik");
 //        System.out.println(trie.get("souvik"));

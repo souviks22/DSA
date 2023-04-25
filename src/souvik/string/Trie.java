@@ -1,29 +1,22 @@
 package souvik.string;
 
-public class Trie {
+public class Trie<Value> {
     private static final int R = 256;
-    private Node root;
-
-    public Trie() {
-        root = new Node();
-    }
+    private Node root = new Node();
 
     private static class Node {
-        private Integer value;
-        private final Node[] next;
-
-        public Node() {
-            this.next = new Node[R];
-        }
+        private Object value;
+        private final Node[] next = new Node[R];
     }
 
-    public Integer get(String key) {
-        return get(root, key, 0);
+    public Value get(String key) {
+        Node node = get(root, key, 0);
+        return (node == null) ? null : (Value) node.value;
     }
 
-    private Integer get(Node node, String key, int d) {
+    private Node get(Node node, String key, int d) {
         if (node == null) return null;
-        if (d == key.length()) return node.value;
+        if (d == key.length()) return node;
         return get(node.next[key.charAt(d)], key, d + 1);
     }
 
