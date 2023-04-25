@@ -12,7 +12,10 @@ public class Main {
         // Trie
 //        Trie<Integer> trie = new Trie<>();
 //        trie.put("souvik", 7);
+//        trie.put("sarkar", 10);
 //        System.out.println(trie.get("souvik"));
+//        for (String s : trie.keys()) System.out.println(s);
+//        System.out.println(trie.longestKeyIn("souviksarkar"));
 //        trie.delete("souvik");
 //        System.out.println(trie.get("souvik"));
 

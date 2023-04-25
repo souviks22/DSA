@@ -1,5 +1,7 @@
 package souvik.string;
 
+import souvik.support.Queue;
+
 public class Trie<Value> {
     private static final int R = 256;
     private Node root = new Node();
@@ -11,7 +13,8 @@ public class Trie<Value> {
 
     public Value get(String key) {
         Node node = get(root, key, 0);
-        return (node == null) ? null : (Value) node.value;
+        if (node == null) return null;
+        return (Value) node.value;
     }
 
     private Node get(Node node, String key, int d) {
@@ -40,5 +43,39 @@ public class Trie<Value> {
         if (d == key.length()) node.value = null;
         else node.next[key.charAt(d)] = delete(node.next[key.charAt(d)], key, d + 1);
         return node;
+    }
+
+    public Iterable<String> keys() {
+        Queue<String> queue = new Queue<>();
+        collect(root, "", queue);
+        return queue;
+    }
+
+    private void collect(Node node, String prefix, Queue<String> queue) {
+        if (node == null) return;
+        if (node.value != null) queue.enqueue(prefix);
+        for (char c = 0; c < R; c++) {
+            collect(node.next[c], prefix + c, queue);
+        }
+    }
+
+    public Iterable<String> keysStartWith(String prefix) {
+        Queue<String> queue = new Queue<>();
+        Node node = get(root, prefix, 0);
+        if (node == null) return null;
+        collect(node, prefix, queue);
+        return queue;
+    }
+
+    public String longestKeyIn(String domain) {
+        int len = search(root, domain, 0, 0);
+        if (len == 0) return null;
+        return domain.substring(0, len);
+    }
+
+    private int search(Node node, String domain, int d, int length) {
+        if (node == null) return length;
+        if (node.value != null) length = d;
+        return search(node.next[domain.charAt(d)], domain, d + 1, length);
     }
 }
