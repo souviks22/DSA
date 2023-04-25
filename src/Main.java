@@ -2,6 +2,10 @@ public class Main {
     public static void main(String[] args) {
         var begin = System.currentTimeMillis();
 
+        // Suffix Operations
+//        MyString myString = new MyString("souviksarkarsouvik20isark");
+//        System.out.println(Suffix.longestRepeatedSubstring(myString));
+
         // Ternary Search Trie
 //        TernarySearchTrie<Integer> tst = new TernarySearchTrie<>();
 //        tst.put("souvik", 7);
