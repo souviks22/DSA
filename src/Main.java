@@ -2,6 +2,10 @@ public class Main {
     public static void main(String[] args) {
         var begin = System.currentTimeMillis();
 
+        // Palindrome Partitioning
+//        PalindromePartitioning pal = new PalindromePartitioning("ababbbabbababa");
+//        System.out.println(pal.getMinPartitions());
+
         // Graph Coloring
 //        GraphAL graphAL = new GraphAL(4);
 //        graphAL.addEdge(0, 1);
