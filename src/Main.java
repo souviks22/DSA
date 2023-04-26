@@ -2,6 +2,18 @@ public class Main {
     public static void main(String[] args) {
         var begin = System.currentTimeMillis();
 
+        // Graph Coloring
+//        GraphAL graphAL = new GraphAL(4);
+//        graphAL.addEdge(0, 1);
+//        graphAL.addEdge(1, 2);
+//        graphAL.addEdge(2, 3);
+//        graphAL.addEdge(3, 0);
+//        GraphColoring coloring = new GraphColoring(graphAL, 3);
+//        System.out.println(coloring.isColorable());
+//        for (int[] colored : coloring.waysToColor()) {
+//            System.out.println(Arrays.toString(colored));
+//        }
+
         // Suffix Operations
 //        MyString myString = new MyString("souviksarkarsouvik20isark");
 //        System.out.println(Suffix.longestRepeatedSubstring(myString));
