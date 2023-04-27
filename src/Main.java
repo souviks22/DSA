@@ -2,6 +2,12 @@ public class Main {
     public static void main(String[] args) {
         var begin = System.currentTimeMillis();
 
+        // Knapsack
+//        double[] values = {60, 100, 120};
+//        double[] weights = {10, 20, 30};
+//        Knapsack knapsack = new Knapsack(values, weights, 50);
+//        System.out.println("Maximum Value is Rs." + knapsack.maxValue() + "/-");
+
         // Palindrome Partitioning
 //        PalindromePartitioning pal = new PalindromePartitioning("ababbbabbababa");
 //        System.out.println(pal.getMinPartitions());
@@ -86,7 +92,7 @@ public class Main {
 //        System.out.println("Minimum number of element multiplications is " + matrixChainMultiplication.getMinMultiplications());
 //        System.out.println("Required order of matrix multiplication is " + matrixChainMultiplication.getMultiplicationOrder());
 
-//         Topological Sort
+        // Topological Sort
 //        Digraph digraph = new Digraph(10);
 //        for (int i = 1; i < 10; i++) {
 //            digraph.addEdge(i - 1, i);
