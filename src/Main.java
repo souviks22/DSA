@@ -96,13 +96,16 @@ public class Main {
 //            System.out.println(i);
 //        }
 
-        // Weighted Job Scheduling
-//        double[] p = {50, 20, 100, 200};
-//        int[] s = {1, 3, 6, 2};
-//        int[] e = {2, 5, 19, 100};
-//
-//        JobScheduling jobScheduling = new JobScheduling(p, s, e);
-//        System.out.println("Maximum Profit is Rs." + jobScheduling.maxProfit() + "/-");
+        // Job Scheduling
+//        double[] profits1 = {50, 20, 100, 200};
+//        double[] deadlines = {2, 1, 2, 22};
+//        JobScheduling js1 = new JobScheduling(profits1, deadlines);
+//        System.out.println("Maximum Profit of Unit Jobs is Rs." + js1.maxProfit() + "/-");
+//        double[] profits2 = {50, 20, 100, 200};
+//        double[] starts = {1, 3, 6, 2};
+//        double[] ends = {2, 5, 19, 100};
+//        JobScheduling js2 = new JobScheduling(profits2, starts, ends);
+//        System.out.println("Maximum Profit of Weighted Jobs is Rs." + js2.maxProfit() + "/-");
 
         // Graph
 //        int V = 1000;
